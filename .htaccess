@@ -1,4 +1,4 @@
 RewriteEngine On
 RewriteBase /
 
-RewriteRule ^(.*)\.r(\.(jpe?g|png|gif))$ respond.php?image_path=$1$2 [L]
+RewriteRule ^(.*)\.r(\.(jpe?g|png|gif))$ respond.php?resp-image-path=$1$2 [L]

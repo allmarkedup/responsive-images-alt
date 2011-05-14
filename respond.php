@@ -1,16 +1,16 @@
 <?php
 
-if ( isset($_GET['image_path']) )
+if ( isset($_GET['resp-image-path']) )
 {
-    $file = realpath(dirname(__FILE__).'/'.$_GET['image_path']); // assuming that this file is placed in the document root
+    $file = realpath(dirname(__FILE__).'/'.$_GET['resp-image-path']); // assuming that this file is placed in the document root
     list($width, $height, $type) = getimagesize($file);
     $info = pathinfo($file);
 
     if ( ! in_array( strtolower($info['extension']), array('gif','jpg','jpeg','png')) ) die(); // quick format check
     
-    $bp = isset($_COOKIE['rwd-breakpoint']) ? intval($_COOKIE['rwd-breakpoint']) : 480;
+    $bp = isset($_COOKIE['resp-breakpoint']) ? intval($_COOKIE['resp-breakpoint']) : 480;
     
-    if ( isset( $_COOKIE['rwd-resolution'] ) && intval($_COOKIE['rwd-resolution']) > $bp )
+    if ( isset( $_COOKIE['resp-resolution'] ) && intval($_COOKIE['resp-resolution']) > $bp )
     {
          // load the bigger image for larger screen resolutions
          // for this example, larger images are stored with the same name in a subdir called 'large'
