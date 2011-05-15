@@ -1,5 +1,30 @@
 RewriteEngine On
 RewriteBase /
 
+#######################################
+
+# Approach A - Consistent naming convention (image.jpg -> image.large.jpg)
+
+# check that the cookie is set
+RewriteCond %{HTTP_COOKIE} rwdimgsize=large
+# only attempt to redirect images that have a ?r query string
 RewriteCond %{QUERY_STRING} ^r$
-RewriteRule ^(.*\.(jpe?g|png|gif))$ respond.php?resp-image-path=$1 [L]
+# just to be on the safe side, check that the larger version actually exists
+RewriteCond %{DOCUMENT_ROOT}/$1.large$2 -f
+# Do the actual rewrite
+RewriteRule (.*)(\.(jpe?g|png|gif))$ $1.large$2 [L]
+
+#######################################
+
+# Approach B - Large image filename passed in the query string (?r=largeimage.jpg)
+
+# check that the cookie is set
+RewriteCond %{HTTP_COOKIE} rwdimgsize=large
+# check that we have a path specified to redirect to
+RewriteCond %{QUERY_STRING} ^r=(.*)$
+# just to be on the safe side, check that the specified larger version actually exists
+RewriteCond %{DOCUMENT_ROOT}/%1 -f
+# Do the actual rewrite
+RewriteRule (.*)\.(jpe?g|png|gif)$ %1? [L]
+
+#######################################

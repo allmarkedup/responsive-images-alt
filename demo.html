@@ -5,9 +5,9 @@
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script>
-		// var resp_breakPoint = 600;
+		// var rwd_breakPoint = 600;
 	</script>
-	<script src="/resp-images.js"></script>
+	<script src="/rwd-images.js"></script>
 	
 	<style>
 
@@ -23,9 +23,19 @@
 	
 	<h1>Responsive images demo</h1>
 	
-	<p>The following image will load either small or large version depending on screen resolution. Requires cookies - cookie-less browsers will fallback to being served the version referenced in the HTML.</p>
+	<p>The following images will automatically load either a small or large version depending on screen resolution, as long as cookies are enabled (non-cookie users will get the mobile size).
+		
+	<h2>Approach A</h2>
+		
+	<p>If your small and large image filenames are consistent and predictable (such as filename.jpg vs filename.large.jpg), then you only need to add a <code>?r</code> to the end of the image filename.</p>
 	
 	<img src="/img/kitteh.jpg?r">
+	
+	<h2>Approach B</h2>
+	
+	<p>If your larger image is not predictably named then you can specify a path to the larger image by just appending it as a parameter to the query string, such as <code>?r=img/kitteh.large.jpg</code>.</p>	
+	
+	<img src="/img/kitteh.jpg?r=/img/kitteh.large.jpg">
 	
 	<p id="credit">Based on the <a href="https://github.com/filamentgroup/Responsive-Images">original concept</a> by Filament Group. Images via <a href="http://placekitten.com/">Placekitten</a></p>
 	
