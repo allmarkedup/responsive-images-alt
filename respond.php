@@ -3,10 +3,11 @@
 if ( isset($_GET['resp-image-path']) )
 {
     $file = realpath(dirname(__FILE__).'/'.$_GET['resp-image-path']); // assuming that this file is placed in the document root
-    list($width, $height, $type) = getimagesize($file);
     $info = pathinfo($file);
 
     if ( ! in_array( strtolower($info['extension']), array('gif','jpg','jpeg','png')) ) die(); // quick format check
+    
+    list($width, $height, $type) = getimagesize($file);
     
     $bp = isset($_COOKIE['resp-breakpoint']) ? intval($_COOKIE['resp-breakpoint']) : 480;
     

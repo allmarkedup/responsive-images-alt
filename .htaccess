@@ -1,4 +1,5 @@
 RewriteEngine On
 RewriteBase /
 
-RewriteRule ^(.*)\.r(\.(jpe?g|png|gif))$ respond.php?resp-image-path=$1$2 [L]
+RewriteCond %{QUERY_STRING} ^r$
+RewriteRule ^(.*\.(jpe?g|png|gif))$ respond.php?resp-image-path=$1 [L]
