@@ -1,9 +1,11 @@
 Responsive Images
 ==================
 
-An variation on the Filament Group's [responsive images technique](https://github.com/filamentgroup/Responsive-Images).
+An variation on the Filament Group's [responsive images technique](https://github.com/filamentgroup/Responsive-Images) (the cookie-driven version).
 
-The aim of this version is to reduce the amount of JS required for both the situation where there is a naming convention in place to identify the larger size image and for when the larger file needs to be specified in the source. In fact in this approach, the JS simply sets a cookie identifying whether or not the larger image should be loaded.
+The aim of this variation is to cut down the amount of JS required for both the situation where there is a naming convention in place to identify the larger size image *and* for when the larger file needs to be specified in the source. In fact in this approach, the JS simply sets a cookie identifying whether or not the larger image should be loaded, and the .htaccess file deals with the rest.
+
+This is not a fork of their repo as this version requires a slightly different syntax to trigger the responsive image loading behaviour.
 
 ## Approach A
 	
