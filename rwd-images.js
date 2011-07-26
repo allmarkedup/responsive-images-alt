@@ -1,7 +1,7 @@
 (function( win ){
     
     var doc = win.document,
-        winWidth = win.screen.availWidth,
+        winWidth = win.documentElement.clientWidth,
         breakPoint = ( 'rwd_breakPoint' in win ) ? win.rwd_breakPoint : 480,
         date = new Date();
         
